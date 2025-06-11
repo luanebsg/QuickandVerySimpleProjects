@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Secret Santa: Your Guide!</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        /* Define a fonte Inter como padrão para todo o documento */
+        body {
+            font-family: 'Inter', sans-serif;
+            margin: 0;
+            padding: 0;
+            overflow: hidden; /* Evita rolagem, garantindo que tudo apareça na tela */
+        }
+        /* Importa a fonte Inter do Google Fonts */
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap');
+
+        /* Keyframe animation for fade-in effect */
+        @keyframes fadeInMoveUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        /* Apply animation to elements */
+        .animate-fade-in-up {
+            animation: fadeInMoveUp 1s ease-out forwards;
+        }
+    </style>
+</head>
+<body class="bg-gradient-to-br from-red-500 via-pink-500 to-purple-600 min-h-screen flex items-center justify-center p-4">
+
+    <!-- Simple background audio. Replace the 'src' with your desired royalty-free music file. -->
+    <!-- Make sure the audio file is hosted online and accessible. -->
+    <audio autoplay loop volume="0.2"> <!-- volume="0.2" sets the volume to 20% -->
+        <!-- Replace this placeholder URL with your actual audio file URL -->
+        <source src="YOUR_ROYALTY_FREE_MUSIC_URL_HERE.mp3" type="audio/mpeg">
+        Seu navegador não suporta o elemento de áudio.
+    </audio>
+
+    <!-- Main container for the presentation, designed to be responsive -->
+    <div class="w-full max-w-7xl flex flex-col lg:flex-row items-center justify-around gap-6
+                bg-white bg-opacity-20 rounded-3xl shadow-xl p-6 md:p-8 lg:p-10
+                text-white text-center animate-fade-in-up">
+
+        <!-- Left Column: Introduction and Name Explanation -->
+        <div class="lg:w-1/2 flex flex-col items-center lg:items-start text-center lg:text-left gap-4 p-2">
+            <h1 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold mb-2 text-yellow-200 drop-shadow-lg">
+                Secret Santa! 🎅🎁
+            </h1>
+            <p class="text-lg sm:text-xl lg:text-2xl font-semibold mb-4 leading-tight">
+                Olá, turma! É o nosso **Amigo Oculto** americano!
+            </p>
+
+            <div class="bg-white bg-opacity-25 rounded-2xl p-5 sm:p-6 shadow-md w-full max-w-md lg:max-w-none transform transition-transform duration-300 hover:scale-105">
+                <h2 class="text-2xl sm:text-3xl font-bold mb-2 text-yellow-100">
+                    Why "Secret Santa"?
+                </h2>
+                <ul class="list-none text-base sm:text-lg text-left space-y-1 pl-4">
+                    <li class="relative pl-4">
+                        <span class="absolute left-0 text-yellow-300">👉</span>
+                        <span class="font-bold">"Secret":</span> You don't know who will give you the gift... or who you picked! 🤫
+                    </li>
+                    <li class="relative pl-4 mt-2">
+                        <span class="absolute left-0 text-yellow-300">👉</span>
+                        <span class="font-bold">"Santa":</span> Comes from the tradition of giving gifts at Christmas, like Santa Claus.
+                    </li>
+                    <li class="relative pl-4 mt-2">
+                        <span class="absolute left-0 text-yellow-300">👉</span>
+                        <span class="font-bold">Other Names:</span>
+                        <ul class="list-disc list-inside text-sm sm:text-base ml-4 mt-1">
+                            <li><span class="font-semibold">"Kris Kringle"</span> (Australia)</li>
+                            <li><span class="font-semibold">"White Elephant"</span> (USA, with "stealing" rules!)</li>
+                            <li><span class="font-semibold">"Polyanna"</span> (Some US regions)</li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Right Column: How to Describe and LLM Feature -->
+        <div class="lg:w-1/2 flex flex-col items-center lg:items-end text-center lg:text-right gap-4 p-2">
+            <h2 class="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-yellow-200 drop-shadow-lg">
+                Your Mission: Describe your Secret Santa!
+            </h2>
+            <p class="text-lg sm:text-xl lg:text-2xl font-semibold mb-2 leading-tight">
+                Give clues without saying the name! 🕵️‍♀️
+            </p>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-4 w-full">
+                <!-- Card 1: Physical Appearance -->
+                <div class="bg-white bg-opacity-25 rounded-2xl p-5 sm:p-6 shadow-md transform transition-transform duration-300 hover:scale-105 min-h-[160px] flex flex-col justify-center">
+                    <h3 class="text-xl sm:text-2xl font-bold mb-1 text-yellow-100">
+                        1. Physical Appearance
+                    </h3>
+                    <ul class="text-base sm:text-lg text-left list-none pl-2">
+                        <li class="flex items-center gap-1">📏 Height? (Tall, short, medium)</li>
+                        <li class="flex items-center gap-1">💇‍♀️ Hair? (Color, style)</li>
+                        <li class="flex items-center gap-1">👀 Eyes? (Color, glasses?)</li>
+                    </ul>
+                </div>
+                <!-- Card 2: Personality -->
+                <div class="bg-white bg-opacity-25 rounded-2xl p-5 sm:p-6 shadow-md transform transition-transform duration-300 hover:scale-105 min-h-[160px] flex flex-col justify-center">
+                    <h3 class="text-xl sm:text-2xl font-bold mb-1 text-yellow-100">
+                        2. Personality
+                    </h3>
+                    <ul class="text-base sm:text-lg text-left list-none pl-2">
+                        <li class="flex items-center gap-1">😂 Funny?</li>
+                        <li class="flex items-center gap-1">🤫 Shy?</li>
+                        <li class="flex items-center gap-1">🤝 Friendly?</li>
+                        <li class="flex items-center gap-1">🎨 Creative?</li>
+                        <li class="flex items-center gap-1">Quiet?</li>
+                    </ul>
+                </div>
+                <!-- Card 3: Interests/Hobbies -->
+                <div class="bg-white bg-opacity-25 rounded-2xl p-5 sm:p-6 shadow-md transform transition-transform duration-300 hover:scale-105 min-h-[160px] flex flex-col justify-center">
+                    <h3 class="text-xl sm:text-2xl font-bold mb-1 text-yellow-100">
+                        3. Interests & Hobbies
+                    </h3>
+                    <ul class="text-base sm:text-lg text-left list-none pl-2">
+                        <li class="flex items-center gap-1">⚽ Sports?</li>
+                        <li class="flex items-center gap-1">🎶 Music?</li>
+                        <li class="flex items-center gap-1">📚 Reading?</li>
+                        <li class="flex items-center gap-1">🎮 Gaming?</li>
+                        <li class="flex items-center gap-1">👨‍🍳 Cooking?</li>
+                    </ul>
+                </div>
+            </div>
+            <p class="text-lg sm:text-xl font-semibold mt-4 text-yellow-100">
+                Ready for the fun? Start describing! 🎉
+            </p>
+
+            <!-- New LLM Feature Section -->
+            <div class="mt-8 w-full bg-white bg-opacity-25 rounded-2xl p-4 sm:p-5 shadow-md transform transition-transform duration-300 hover:scale-105">
+                <h3 class="text-xl sm:text-2xl font-bold mb-2 text-yellow-100">
+                    ✨ Need a clue example? ✨
+                </h3>
+                <button id="generateClueButton" onclick="generateClue()"
+                        class="bg-yellow-400 hover:bg-yellow-500 text-purple-800 font-bold py-2 px-6 rounded-full shadow-lg transition-all duration-300 ease-in-out transform hover:scale-105 focus:outline-none focus:ring-4 focus:ring-yellow-300 focus:ring-opacity-75">
+                    Get an Example Clue!
+                </button>
+                <div id="loadingIndicator" class="hidden mt-4 text-sm text-yellow-100">
+                    Generating clue...
+                </div>
+                <p id="clueOutput" class="mt-4 text-lg text-white italic text-left"></p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Function to generate a clue using Gemini API
+        async function generateClue() {
+            const clueOutputDiv = document.getElementById('clueOutput');
+            const generateButton = document.getElementById('generateClueButton');
+            const loadingIndicator = document.getElementById('loadingIndicator');
+
+            clueOutputDiv.textContent = ''; // Clear previous clue
+            loadingIndicator.classList.remove('hidden'); // Show loading indicator
+            generateButton.disabled = true; // Disable button during generation
+            generateButton.classList.add('opacity-50', 'cursor-not-allowed'); // Visual feedback for disabled button
+
+
+            try {
+                // Prompt for the Gemini LLM to generate a creative clue
+                const prompt = "Generate a short, creative, and slightly mysterious clue (2-3 sentences) about a hypothetical person. Include a detail about their appearance (e.g., 'dark, curly hair'), one personality trait (e.g., 'a good sense of humor'), and one hobby (e.g., 'loves reading'). The clue should be in English. Do not reveal the person's name directly, just describe them.";
+                let chatHistory = [];
+                chatHistory.push({ role: "user", parts: [{ text: prompt }] });
+                const payload = { contents: chatHistory };
+                // Using an empty API key, as the Canvas environment automatically provides it at runtime
+                const apiKey = "";
+                const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=${apiKey}`;
+
+                const response = await fetch(apiUrl, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(payload)
+                });
+
+                const result = await response.json();
+                // Check if the response structure is valid and contains content
+                if (result.candidates && result.candidates.length > 0 &&
+                    result.candidates[0].content && result.candidates[0].content.parts &&
+                    result.candidates[0].content.parts.length > 0) {
+                    const text = result.candidates[0].content.parts[0].text;
+                    clueOutputDiv.textContent = text; // Display the generated clue
+                } else {
+                    clueOutputDiv.textContent = "Could not generate a clue. Please try again.";
+                    console.error("Gemini API response structure unexpected:", result);
+                }
+            } catch (error) {
+                clueOutputDiv.textContent = "An error occurred while generating the clue.";
+                console.error("Error calling Gemini API:", error);
+            } finally {
+                loadingIndicator.classList.add('hidden'); // Hide loading indicator
+                generateButton.disabled = false; // Re-enable button
+                generateButton.classList.remove('opacity-50', 'cursor-not-allowed'); // Remove visual feedback
+            }
+        }
+    </script>
+</body>
+</html>
