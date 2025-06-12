@@ -1,0 +1,4 @@
+[build]
+  base    = "MiscellaneousUtilities/ForFriends/WeddingChecklist"
+  publish = "dist"
+  command = "npm run build"
