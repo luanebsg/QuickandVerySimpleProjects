@@ -1,8 +1,8 @@
 import { initializeApp } from "firebase/app";
 import { getFirestore } from "firebase/firestore";
-import { getAuth, signInAnonymously, onAuthStateChanged } from "firebase/auth";
+import { getAuth } from "firebase/auth";
 
-// ⬇️ Use exatamente as chaves que apareceram no seu painel:
+// Use suas credenciais do Firebase aqui:
 const firebaseConfig = {
   apiKey: "AIzaSyA-mv55FXajqleSIQK8nMDyP62tugWuBH8",
   authDomain: "wedding-checklist-55419.firebaseapp.com",
