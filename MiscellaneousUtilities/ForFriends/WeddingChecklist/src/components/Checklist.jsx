@@ -186,7 +186,7 @@ const Checklist = () => {
 
       <div className="max-w-4xl mx-auto bg-white rounded-lg shadow-xl p-6 sm:p-8 border border-pink-200">
         <h1 className="text-3xl sm:text-4xl font-bold text-center text-pink-600 mb-2">
-          Canvas de Planejamento de Casamento da Laura 💖
+          Checklist de Casamento da Laura 💖
         </h1>
         <p className="text-center text-gray-600 mb-6">
           Seu guia interativo para organizar o grande dia!
