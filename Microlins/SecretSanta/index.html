@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Secret Santa: Your Guide!</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Estilos customizados -->
+    <link rel="stylesheet" href="style.css"/>
+</head>
+<body class="bg-[#FBF6EE] font-inter">
+
+    <!-- Áudio de fundo (opcional) -->
+    <audio autoplay loop volume="0.2">
+        <source src="YOUR_ROYALTY_FREE_MUSIC_URL_HERE.mp3" type="audio/mpeg">
+        Seu navegador não suporta o elemento de áudio.
+    </audio>
+
+    <div class="min-h-screen flex flex-col items-center justify-center p-4 sm:p-6">
+
+        <!-- Título principal -->
+        <h1 class="text-4xl sm:text-5xl font-bold mb-6 sm:mb-8 text-center text-[#65451F] drop-shadow-lg animate-fade-in-up">
+            Secret Santa! 🎅🎁
+        </h1>
+
+        <!-- Introdução -->
+        <p class="text-lg sm:text-xl font-semibold mb-6 text-[#65451F] text-center animate-fade-in-up">
+            Hello, class! This is our American <b>Secret Santa</b>!
+        </p>
+
+        <!-- Linha dos dois cards principais -->
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8 w-full max-w-6xl">
+            <!-- Card 1: Explicação do nome -->
+            <div class="card animate-fade-in-up bg-[#FFF2D8] hover:scale-[1.03] hover:shadow-2xl transition-transform duration-200">
+                <h2 class="card-title">Why "Secret Santa"?</h2>
+                <ul class="card-list">
+                    <li>
+                        <span class="emoji">👉</span>
+                        <b>"Secret":</b> You don’t know who will give you a gift… or who you picked! 🤫
+                    </li>
+                    <li>
+                        <span class="emoji">👉</span>
+                        <b>"Santa":</b> Comes from the tradition of giving presents at Christmas, just like Santa Claus.
+                    </li>
+                    <li>
+                        <span class="emoji">👉</span>
+                        <b>Other names:</b>
+                        <ul class="ml-8 list-disc text-base mt-1">
+                            <li><b>Kris Kringle</b> (Australia)</li>
+                            <li><b>White Elephant</b> (USA, with "stealing" rules!)</li>
+                            <li><b>Polyanna</b> (Some regions in the USA)</li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+
+            <!-- Card 2: Sua missão -->
+            <div class="card card-mission animate-fade-in-up bg-[#EAC696] hover:scale-[1.03] hover:shadow-2xl transition-transform duration-200 cursor-pointer overflow-visible">
+                <h2 class="card-title">Your Mission: Describe Your Secret Santa!</h2>
+                <p class="mb-4 text-[#4C3D3D]">Give clues without revealing the name! 🕵️‍♀️</p>
+                <p class="text-[#65451F] font-semibold">Ready? Start describing! 🎉</p>
+            </div>
+        </div>
+
+        <!-- Linha SEPARADA com os três sub-cards (após os dois principais) -->
+        <div class="subcard-container mt-2 mb-8">
+            <!-- Sub-card 1: Aparência -->
+            <div class="sub-card interactive-card bg-[#D8AE7E]">
+                <h3 class="sub-card-title">1. Appearance</h3>
+                <ul>
+                    <li>📏 Height? (Tall, short...)</li>
+                    <li>💇‍♀️ Hair? (Color, style)</li>
+                    <li>👀 Eyes? (Color, glasses?)</li>
+                </ul>
+            </div>
+            <!-- Sub-card 2: Personalidade -->
+            <div class="sub-card interactive-card bg-[#C8AE7D]">
+                <h3 class="sub-card-title">2. Personality</h3>
+                <ul>
+                    <li>😂 Funny?</li>
+                    <li>🫣 Shy?</li>
+                    <li>🤝 Friendly?</li>
+                    <li>🎨 Creative?</li>
+                    <li>🤫 Quiet?</li>
+                </ul>
+            </div>
+            <!-- Sub-card 3: Interesses -->
+            <div class="sub-card interactive-card bg-[#B99F6F]">
+                <h3 class="sub-card-title">3. Interests</h3>
+                <ul>
+                    <li>⚽ Sports?</li>
+                    <li>🎶 Music?</li>
+                    <li>📚 Reading?</li>
+                    <li>🎮 Gaming?</li>
+                    <li>👨‍🍳 Cooking?</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Card: Exemplo de Dica (com botão interativo) -->
+        <div class="card animate-fade-in-up bg-[#FFF2D8] w-full max-w-6xl hover:scale-[1.02] hover:shadow-2xl transition-transform duration-200">
+            <h3 class="card-title">✨ Need a clue example? ✨</h3>
+            <button id="generateClueButton"
+                class="bg-[#EAC696] hover:bg-[#D8AE7E] text-[#65451F] font-bold py-2 px-6 rounded-full shadow-lg transition-all duration-300 ease-in-out transform hover:scale-105 focus:outline-none focus:ring-4 focus:ring-yellow-300 focus:ring-opacity-75 mb-3">
+                Get an example clue!
+            </button>
+            <div id="loadingIndicator" class="hidden text-sm text-[#C8AE7D] mb-2">
+                Generating clue...
+            </div>
+            <p id="clueOutput" class="text-lg text-[#65451F] italic text-center min-h-[40px]"></p>
+        </div>
+    </div>
+
+    <!-- Script de geração de dica -->
+    <script src="clue.js"></script>
+</body>
+</html>
