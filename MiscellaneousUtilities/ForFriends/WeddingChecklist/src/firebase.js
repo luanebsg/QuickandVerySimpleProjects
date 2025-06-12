@@ -2,7 +2,7 @@ import { initializeApp } from "firebase/app";
 import { getFirestore } from "firebase/firestore";
 import { getAuth } from "firebase/auth";
 
-// Configuração do seu Firebase
+// Configuração do Firebase
 const firebaseConfig = {
   apiKey: "AIzaSyA-mv5SFXajqleSIQK8nMDyP62tugWuBH8",
   authDomain: "wedding-checklist-55419.firebaseapp.com",
