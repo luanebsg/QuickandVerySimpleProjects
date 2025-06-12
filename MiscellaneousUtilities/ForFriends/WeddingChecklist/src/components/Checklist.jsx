@@ -4,49 +4,107 @@ import { signInAnonymously, onAuthStateChanged } from "firebase/auth";
 import { doc, setDoc, onSnapshot } from "firebase/firestore";
 import { Check, ChevronDown, ChevronUp } from "lucide-react";
 
-// O seu checklist inicial:
+// Checklist inicial de casamento
 const initialChecklistData = [
-  // ... (cole aqui todo o array que te passei antes, igualzinho!)
+  {
+    id: "local",
+    category: "Local",
+    title: "Definir o local da cerimônia",
+    description: "Escolha onde será realizada a cerimônia.",
+    options: [
+      { id: "igreja", label: "Igreja" },
+      { id: "salao", label: "Salão de festas" },
+      { id: "praia", label: "Praia" }
+    ]
+  },
+  {
+    id: "buffet",
+    category: "Comida",
+    title: "Escolher o buffet",
+    description: "Selecione o fornecedor do buffet.",
+    options: [
+      { id: "buffetA", label: "Buffet A" },
+      { id: "buffetB", label: "Buffet B" },
+      { id: "selfservice", label: "Self-Service" }
+    ]
+  },
+  {
+    id: "decoracao",
+    category: "Decoração",
+    title: "Definir decoração",
+    description: "Escolha o estilo/empresa da decoração.",
+    options: [
+      { id: "rustica", label: "Rústica" },
+      { id: "classica", label: "Clássica" },
+      { id: "personalizada", label: "Personalizada" }
+    ]
+  },
+  {
+    id: "musica",
+    category: "Música",
+    title: "Contratar música",
+    description: "Escolha quem vai tocar na cerimônia/festa.",
+    options: [
+      { id: "dj", label: "DJ" },
+      { id: "banda", label: "Banda" },
+      { id: "playlist", label: "Playlist própria" }
+    ]
+  },
+  {
+    id: "foto",
+    category: "Fotografia",
+    title: "Contratar fotógrafo",
+    description: "Selecione o responsável pelas fotos.",
+    options: [
+      { id: "fotografoA", label: "Fotógrafo A" },
+      { id: "fotografoB", label: "Fotógrafo B" },
+      { id: "amigo", label: "Amigo/Parente" }
+    ]
+  }
 ];
 
 const Checklist = () => {
-  const [checklist, setChecklist] = useState(null); // começa como null para indicar "carregando"
+  const [checklist, setChecklist] = useState(null);
   const [activeSection, setActiveSection] = useState(null);
   const [userId, setUserId] = useState(null);
 
-  // Autenticação anônima e sincronização com Firestore
+  // Autenticação e leitura/criação dos dados iniciais
   useEffect(() => {
-    const unsubscribe = onAuthStateChanged(auth, async (user) => {
+    let unsubFirestore = null;
+    const unsubAuth = onAuthStateChanged(auth, async (user) => {
       if (user) {
         setUserId(user.uid);
         const docRef = doc(db, "users", user.uid);
-        // Escuta mudanças em tempo real no Firestore
-        const unsubFirestore = onSnapshot(docRef, (docSnap) => {
-          if (docSnap.exists()) {
+        unsubFirestore = onSnapshot(docRef, async (docSnap) => {
+          if (docSnap.exists() && docSnap.data().checklist && docSnap.data().checklist.length > 0) {
             setChecklist(docSnap.data().checklist);
           } else {
-            // Se não existe dados, inicializa com o array inicial
-            setChecklist(initialChecklistData.map(item => ({
+            // Se não existe checklist, inicializa!
+            const initialData = initialChecklistData.map(item => ({
               ...item,
               options: item.options.map(opt => ({ ...opt, budget: "", pros: "", cons: "" })),
               selectedOption: null,
               completed: false,
               currentBudget: 0
-            })));
+            }));
+            setChecklist(initialData);
+            // Salva no Firestore
+            await setDoc(docRef, { checklist: initialData }, { merge: true });
           }
         });
-        return unsubFirestore;
       } else {
-        // Se não está autenticado, faz login anônimo
         await signInAnonymously(auth);
       }
     });
-    return () => unsubscribe();
+    return () => {
+      unsubAuth();
+      if (unsubFirestore) unsubFirestore();
+    };
   }, []);
 
   // Sempre que o checklist mudar, salva no Firestore
   useEffect(() => {
-    if (userId && checklist) {
+    if (userId && checklist && checklist.length > 0) {
       const docRef = doc(db, "users", userId);
       setDoc(docRef, { checklist }, { merge: true });
     }
@@ -71,7 +129,7 @@ const Checklist = () => {
     );
   };
 
-  // Calcula total gasto
+  // Cálculo do orçamento usado
   const totalBudgetSpent = useMemo(() => {
     if (!checklist) return 0;
     return checklist.reduce((total, item) => {
@@ -95,7 +153,6 @@ const Checklist = () => {
     }, {});
   }, [checklist]);
 
-  // Exibe "carregando" enquanto não tem dados
   if (!checklist) {
     return (
       <div className="flex flex-col min-h-screen justify-center items-center text-pink-600 font-bold text-xl">
@@ -195,7 +252,6 @@ const Checklist = () => {
                         <span className="ml-2 text-sm text-gray-700 font-medium">Concluído</span>
                       </label>
                     </div>
-
                     <div className="space-y-4">
                       {item.options.map(option => (
                         <div key={option.id} className="border border-pink-100 p-4 rounded-lg bg-pink-50 transition-all duration-200 hover:shadow-sm">
